@@ -98,11 +98,9 @@ const refs = {
   const galleryMarkup = createGallery(galleryItems);
   refs.galleryList.insertAdjacentHTML('beforeend', galleryMarkup);
   
+  ///////////////
   
-  
-  /*Open and close modal*/
-  
-  function  onOpenLightboxToggle (e) {
+  function  openLightbox (e) {
     e.preventDefault();
   
     if (e.target.nodeName !== 'IMG') {
@@ -114,20 +112,20 @@ const refs = {
   
   };
   
-  function onCloseLightboxBtn (e) {
+  function closeLightboxBtn (e) {
     if (e.target.nodeName === 'BUTTON') {
       removeClassIsOpen();
     }
     
   };
   
-  function onCloseLightboxOverlay (e) {
+  function closeLightboxOverlay (e) {
     if (e.currentTarget === e.target) {
       removeClassIsOpen();
   }
   };
   
-  function onCloseLightboxESC (e) {
+  function closeLightboxESC (e) {
     if (e.key !== "Escape") {
       return;
     }
@@ -141,8 +139,7 @@ const refs = {
   };
   
   
-  
-  refs.galleryList.addEventListener('click', onOpenLightboxToggle);
-  refs.lightbox__button.addEventListener('click', onCloseLightboxBtn);
-  refs.lightbox__overlay.addEventListener('click', onCloseLightboxOverlay);
-  window.addEventListener('keyup', onCloseLightboxESC);
+  refs.galleryList.addEventListener('click', openLightbox);
+  refs.lightbox__button.addEventListener('click', closeLightboxBtn);
+  refs.lightbox__overlay.addEventListener('click', closeLightboxOverlay);
+  window.addEventListener('keyup', closeLightboxESC);
